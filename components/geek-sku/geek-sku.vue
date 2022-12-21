@@ -6,7 +6,9 @@
 				<view class="info flex">
 					<view class="cover" :style="{backgroundImage: `url(${selectSku.logo || defaultCover})`}"></view>
 					<view class="right">
-						<view class="title ellipsis">{{selectSku.title || defaultTitle}}</view>
+						<view class="title ellipsis t-w">
+							{{selectSku.title || defaultTitle}}
+						</view>
 						<view class="price flex f-y-c">
 							<view class="uity">￥</view>{{selectSku.id ? selectSku.price : `${showAreaPrice[0]}-${showAreaPrice[1]}`}}
 						</view>
@@ -579,6 +581,7 @@
 </script>
 
 <style lang="less" scoped>
+	@import url("../common.less");
 	.sku {
 		position: fixed;
 		left: 0;
@@ -590,25 +593,23 @@
 		.shopSpecsPopup {
 			background: #FFFFFF;
 			border-radius: 24rpx 24rpx 0 0;
-			padding: 80rpx 30rpx 30rpx;
+			padding: 45rpx 30rpx 30rpx;
 			position: fixed;
 			box-sizing: border-box;
 			left: 0;
 			right: 0;
 			bottom: 0;
-		
+			
 			.close {
 				width: 40rpx;
 				height: 40rpx;
 				position: absolute;
-				top: 30rpx;
-				right: 40rpx;
+				top: 33rpx;
+				right: 30rpx;
 			}
 		
 			.content {
 				bottom: 0;
-				max-height: 600rpx;
-				overflow-y: auto;
 			}
 		
 			.btnBox {
@@ -655,6 +656,7 @@
 						font-weight: 500;
 						color: #333333;
 						margin-bottom: 20rpx;
+						padding-right: 120rpx;
 					}
 		
 					.price {
@@ -687,6 +689,8 @@
 			}
 		
 			.specsList {
+				max-height: 350rpx;
+				overflow-y: auto;
 				margin-bottom: 30rpx;
 				.item {
 					.title {

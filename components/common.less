@@ -1,0 +1,135 @@
+/* flex */
+.flex {
+	display: flex;
+}
+/* flex水平居中 */
+.f-x-c {
+	justify-content: center;
+}
+/* flex水平开头 */
+.f-x-s {
+	justify-content: flex-start;
+}
+/* flex水平末尾 */
+.f-x-e {
+	justify-content: flex-end;
+}
+/* flex自动沾满两端 */
+.f-x-b {
+	justify-content: space-between;
+}
+/* flex水平均分 */
+.f-x-around {
+	justify-content: space-around;
+}
+/* flex垂直居中 */
+.f-y-c{
+	align-items: center;
+}
+/* flex垂直开头 */
+.f-y-s {
+	align-items: flex-start;
+}
+/* flex垂直末尾 */
+.f-y-e {
+	align-items: flex-end;
+}
+/* flex水平排列 */
+.f-r {
+	flex-direction: row;
+}
+/* flex垂直排列 */
+.f-c {
+	flex-direction: column;
+}
+/* flex反转水平排列 */
+.f-r-r {
+	flex-direction: row-reverse;
+}
+/* flex反转垂直排列 */
+.f-c-r {
+	flex-direction: column-reverse;
+}
+/* flex换行 */
+.f-w {
+	flex-wrap: wrap;
+}
+/* 文字居中 */
+.t-c {
+	text-align: center;
+}
+// 文字居左
+.t-l {
+	text-align: left;
+}
+// 文字居右
+.t-r {
+	text-align: right;
+}
+// 文字换行
+.t-w {
+	//  不识别单词一行显示不下默认换行
+	word-break: break-all;
+	//  识别单词 不会造成单词断开换行
+	word-wrap: break-word;
+}
+/* 背景图尺寸100% */
+.b-s-100 {
+	background-size: 100% 100%;
+}
+/* 背景图尺寸自适应 */
+.b-s-c {
+	background-size: cover;
+}
+/* 绝对定位 */
+.absolute {
+	position: absolute;
+}
+/* 相对定位 */
+.relative {
+	position: relative;
+}
+/* 固定定位 */
+.fixed {
+	position: fixed;
+}
+/* 外边距居中 */
+.center {
+	margin: 0 auto;
+}
+/* 背景图常见样式 */
+.bgImg {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.BgImg {
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+// 单行文本溢出省略
+.ellipsis {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+// 多行文本溢出隐藏
+.linesEllipsis {
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	word-break: break-all;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+// 滚动条隐藏
+.noScroll::-webkit-scrollbar {
+	display: none;
+}
+// 盒模型
+.borderBox  {
+	box-sizing: border-box;
+}
