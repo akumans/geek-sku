@@ -84,10 +84,6 @@
 	 */
 	import numBox from "../numBox/numBox.vue";
 	import { ref, reactive, inject, toRefs, onMounted, nextTick, watch } from "vue";
-	// 获取全局对象
-	const global = inject('global');
-	// 解构需要使用的部分
-	const { $Common, $api } = global;
 	
 	let props = defineProps({
 		// 源数据

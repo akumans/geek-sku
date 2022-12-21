@@ -40,13 +40,6 @@
 	import {
 		onLoad
 	} from '@dcloudio/uni-app';
-	// 获取全局对象
-	const global = inject('global');
-	// 解构需要使用的部分
-	const {
-		$Common,
-		$api
-	} = global;
 
 	let props = defineProps({
 		// 宽

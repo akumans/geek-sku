@@ -1,7 +1,7 @@
 {
   "id": "geek-sku",
   "displayName": "geek-sku",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "一款轻量化、强大、简洁、可以根据主题色属性自动生成相应主题色的v3版本的商品多规格sku，仅需要按照指定格式传入sku数组便可以直接使用。",
   "keywords": [
     "geek-sku"
