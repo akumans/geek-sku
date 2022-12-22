@@ -1,8 +1,36 @@
 <template>
-	<view class="numBox" :style="{color}">
-		<view class="reduce" @click="change('-')" :class="{ disable: inputValue == minValue }">-</view>
-		<input type="number" :maxlength="-1" :value="inputValue" @input="input"/>
-		<view class="add" @click="change('+')" :class="{ disable: inputValue ==  maxValue }">+</view>
+	<view class="numBox" :style="{
+		color, 
+		width: width + 'rpx',
+		height: height + 'rpx',
+		fontSize: size
+	}">
+		<!-- 禁用- -->
+		<view class="reduce disabled" v-if="inputValue == minValue" :style="{
+			lineHeight: height * 0.95 + 'rpx',
+			color: disabledColor,
+			backgroundColor: disabledBgColor
+		}">-</view>
+		<!-- 启用- -->
+		<view class="reduce" v-else @click="change('-')" :style="{
+			lineHeight: height * 0.95 + 'rpx',
+			backgroundColor: bgColor
+		}">-</view>
+		
+		<!-- 按钮 -->
+		<input type="number" :style="{backgroundColor: bgColor}" :maxlength="-1" :value="inputValue" @input="input"/>
+		
+		<!-- 禁用+ -->
+		<view class="add" v-if="inputValue ==  maxValue" :style="{
+			lineHeight: height * 0.95 + 'rpx',
+			color: disabledColor,
+			backgroundColor: disabledBgColor
+		}">+</view>
+		<!-- 启用+ -->
+		<view class="add" v-else :style="{
+			lineHeight: height * 0.95 + 'rpx',
+			backgroundColor: bgColor
+		}" @click="change('+')">+</view>
 	</view>
 </template>
 
@@ -10,8 +38,8 @@
 	/**
 	 * numBox 步进器
 	 * @description 步进器，一般用于选择商品数量的场景。
-	 * @property {String} width 宽度(默认值: 180rpx)。
-	 * @property {String} height 高度(默认值: 64rpx)。
+	 * @property {Nunber} width 宽度(默认值: 180)。
+	 * @property {Nunber} height 高度(默认值: 64)。
 	 * @property {Nunber} maxValue 最大值(默认值: -1), -1则为无限大
 	 * @property {Nunber} minValue 最小值(默认值: 1)
 	 * @property {Nunber} modelValue 值, v3
@@ -33,11 +61,11 @@
 		props: {
 			// 宽
 			width: {
-				default: "180rpx",
+				default: 180,
 			},
 			// 高
 			height: {
-				default: "64rpx",
+				default: 64,
 			},
 			// 最大值为-1则可最大值为无限
 			maxValue: {
@@ -53,7 +81,7 @@
 				default: 1
 			},
 			// #endif
-			// #ifndef VUE2
+			// #ifndef VUE3
 			value: {
 				default: 1
 			},
@@ -172,7 +200,12 @@
 			}
 		},
 		mounted() {
+			// #ifdef VUE3
 			this.inputValue = this.modelValue;
+			// #endif
+			// #ifndef VUE3
+			this.inputValue = this.value;
+			// #endif
 		},
 		watch: {
 			// #ifdef VUE3
@@ -183,6 +216,7 @@
 			// #endif
 			// #ifndef VUE3
 			value(v1) {
+				console.log(v1);
 				this.inputValue = v1;
 				this.correctingNum(this.inputValue);
 			},
@@ -199,29 +233,18 @@
 
 <style lang="less" scoped>
 	.numBox {
-		width: v-bind(width);
-		height: v-bind(height);
 		border-radius: 10rpx;
 		overflow: hidden;
 		display: flex;
 		align-content: center;
 		text-align: center;
-		font-size: v-bind(size);
 
 		.reduce,
 		.add {
 			width: 33%;
-			line-height: calc(v-bind(height) * 0.95);
-			background-color: v-bind(bgColor);
-
-			&.disable {
-				color: v-bind(disabledColor);
-				background-color: v-bind(disabledBgColor);
-			}
 		}
 
 		input {
-			background-color: v-bind(bgColor);
 			height: 100%;
 			width: 33%;
 			border-left: 3rpx solid #EEEFF1;

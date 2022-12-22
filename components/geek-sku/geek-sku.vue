@@ -19,7 +19,7 @@
 				</view>
 				<view class="number flex f-y-c f-x-b">
 					<view class="key">数量</view>
-					<numBox width="200rpx" integer v-model="num" :minValue="selectSku.stock == 0 ? 0 : 1" :maxValue="selectSku.id ? selectSku.stock : showAreaStock[1]"></numBox>
+					<numBox :width="200" integer v-model="num" :minValue="selectSku.stock == 0 ? 0 : 1" :maxValue="selectSku.id ? selectSku.stock : showAreaStock[1]"></numBox>
 				</view>
 				<view class="specsList">
 					<view class="item" v-for="(skuArr, skuArrKey) in r.result" :key="'skuArrKey' + skuArrKey">
@@ -103,7 +103,7 @@
 			// 源数据
 			data: {
 				default: [],
-				type: Object
+				type: Array
 			},
 			// 是否显示sku组件
 			// #ifdef VUE3
@@ -140,7 +140,7 @@
 			},
 			// 主题色
 			themeColor: {
-				default: [84, 164, 255],
+				default: ()=>[84, 164, 255],
 				type: Array
 			},
 			// 确认按钮文字
@@ -669,7 +669,7 @@
 					align-items: center;
 					color: #FFFFFF;
 					&.disabled {
-						background-color: #b4b4b4;
+						background-color: #b4b4b4 !important;
 						color: #fff;
 					}
 				}
