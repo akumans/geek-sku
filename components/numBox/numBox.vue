@@ -5,32 +5,20 @@
 		height: height + 'rpx',
 		fontSize: size
 	}">
-		<!-- 禁用- -->
-		<view class="reduce disabled" v-if="inputValue == minValue" :style="{
+		<view class="reduce" @click="change('-')" :style="{
 			lineHeight: height * 0.95 + 'rpx',
-			color: disabledColor,
-			backgroundColor: disabledBgColor
-		}">-</view>
-		<!-- 启用- -->
-		<view class="reduce" v-else @click="change('-')" :style="{
-			lineHeight: height * 0.95 + 'rpx',
-			backgroundColor: bgColor
+			color: inputValue == minValue ? disabledColor : '#000',
+			backgroundColor: inputValue == minValue ? disabledBgColor : bgColor
 		}">-</view>
 		
 		<!-- 按钮 -->
 		<input type="number" :style="{backgroundColor: bgColor}" :maxlength="-1" :value="inputValue" @input="input"/>
 		
-		<!-- 禁用+ -->
-		<view class="add" v-if="inputValue ==  maxValue" :style="{
+		<view class="add" @click="change('+')" :style="{
 			lineHeight: height * 0.95 + 'rpx',
-			color: disabledColor,
-			backgroundColor: disabledBgColor
+			color: inputValue ==  maxValue ? disabledColor : '#000',
+			backgroundColor: inputValue ==  maxValue ? disabledBgColor : bgColor
 		}">+</view>
-		<!-- 启用+ -->
-		<view class="add" v-else :style="{
-			lineHeight: height * 0.95 + 'rpx',
-			backgroundColor: bgColor
-		}" @click="change('+')">+</view>
 	</view>
 </template>
 
@@ -54,8 +42,7 @@
 	 * @property {String} borderColor 边框背景色(默认值:EEEFF1)
 	 * @property {String} size -、+大小(默认值: 45rpx)
 	 * @event {Function} change 数量发生变化时触发。
-	 * @event {Function} input 输入数量时发生触发。
-	 * @example <numBox :modelValue="1"></numBox>
+	 * @example <numBox v-model="1"></numBox>
 	 */
 	export default {
 		props: {
@@ -152,27 +139,12 @@
 					value -= this.step;
 					this.inputValue = value.toFixed(decimal);
 				}
-				// #ifdef VUE3
-				this.$emit('update:modelValue', this.inputValue);
-				// #endif
-				// #ifndef VUE3
-				this.$emit('input', this.inputValue);
-				// #endif
-				this.$emit('change', this.inputValue);
 			},
 			
 			// 输入事件
 			input(e) {
 				this.inputValue = e.detail.value;
 				this.correctingNum(this.inputValue);
-				setTimeout(()=>{
-					// #ifdef VUE3
-					this.$emit('update:modelValue', this.inputValue);
-					// #endif
-					// #ifndef VUE3
-					this.$emit('input', this.inputValue);
-					// #endif
-				}, 10)
 			},
 			// 校正数量
 			correctingNum(value) {
@@ -216,11 +188,21 @@
 			// #endif
 			// #ifndef VUE3
 			value(v1) {
-				console.log(v1);
 				this.inputValue = v1;
 				this.correctingNum(this.inputValue);
 			},
 			// #endif
+			inputValue(v1) {
+				this.$nextTick(()=>{
+					// #ifdef VUE3
+					this.$emit('update:modelValue', v1);
+					// #endif
+					// #ifndef VUE3
+					this.$emit('input', v1);
+					// #endif
+					this.$emit('change', v1);
+				})
+			},
 			maxValue() {
 				this.correctingNum(this.inputValue);
 			},

@@ -4,94 +4,189 @@
 ## 使用方法
 从插件时长直接使用HBuilderX 导入插件复制下方的示例即可直接快速使用，然后再根据业务需求进行调整即可。
 
+### v3示例
 ```html
-	<template>
-		<view class="test">
-			<geek-sku
-				v-model="skuShow"
-				:data="skus"
-				defaultTitle="iPhone14 Pro"
-				defaultCover="https://inews.gtimg.com/newsapp_bt/0/15259986145/1000"
-				btnConfirmText="购买"
-				notSelectSku="请选择完整的商品信息"
-				@skuChange="skuChange"
-				@confirm="skuConfirm"
-			></geek-sku>
-			<!-- 打开sku组件 -->
-			<button @click="skuShow = true">打开sku组件</button>
-		</view>
-	</template>
+<template>
+    <view class="test">
+        <geek-sku
+            v-model="skuShow"
+            :data="skus"
+            defaultTitle="iPhone14 Pro"
+            defaultCover="https://inews.gtimg.com/newsapp_bt/0/15259986145/1000"
+            btnConfirmText="购买"
+            notSelectSku="请选择完整的商品信息"
+            @skuChange="skuChange"
+            @confirm="skuConfirm"
+        ></geek-sku>
+        <!-- 打开sku组件 -->
+        <button @click="skuShow = true">打开sku组件</button>
+    </view>
+</template>
 	
-	<script setup>
-		import { ref, reactive, inject, toRefs } from "vue";
-		import { onLoad } from '@dcloudio/uni-app';
-		
-		let skuShow = ref(false);
-		// sku列表
-		let skus = ref([
-			{
-				id: 1,
-				price: 7500,
-				stock: 30,
-				sku_attrs: {
-					'机身颜色': '暗紫色',
-					'储存容量': '128G',
-				}
-			},
-			{
-				id: 2,
-				price: 8500,
-				stock: 10,
-				sku_attrs: {
-					'机身颜色': '暗紫色',
-					'储存容量': '256G',
-				}
-			},
-			{
-				id: 3,
-				price: 9500,
-				stock: 0,
-				sku_attrs: {
-					'机身颜色': '暗紫色',
-					'储存容量': '512G',
-				}
-			},
-			{
-				id: 4,
-				price: 9200,
-				stock: 60,
-				sku_attrs: {
-					'机身颜色': '银色',
-					'储存容量': '512G',
-				}
-			},
-			{
-				id: 5,
-				price: 9200,
-				stock: 80,
-				sku_attrs: {
-					'机身颜色': '金色',
-					'储存容量': '512G',
-				}
-			}
-		])
-		
-		// sku发生改变事件, 选择完整的sku则回返回 否则sku的值为{}
-		let skuChange = (sku)=>{
-			console.log(sku);
-		}
-		// sku确认事件
-		let skuConfirm = (e)=>{
-			console.log(e);
-		}
-	</script>
-	
-	<style lang="less" scoped>
-		.test {
-			padding-top: 3rem;
-		}
-	</style>
+<script setup>
+    import { ref, reactive, inject, toRefs } from "vue";
+    import { onLoad } from '@dcloudio/uni-app';
+    
+    let skuShow = ref(false);
+    // sku列表
+    let skus = ref([
+        {
+            id: 1,
+            price: 7500,
+            stock: 30,
+            sku_attrs: {
+                '机身颜色': '暗紫色',
+                '储存容量': '128G',
+            }
+        },
+        {
+            id: 2,
+            price: 8500,
+            stock: 10,
+            sku_attrs: {
+                '机身颜色': '暗紫色',
+                '储存容量': '256G',
+            }
+        },
+        {
+            id: 3,
+            price: 9500,
+            stock: 0,
+            sku_attrs: {
+                '机身颜色': '暗紫色',
+                '储存容量': '512G',
+            }
+        },
+        {
+            id: 4,
+            price: 9200,
+            stock: 60,
+            sku_attrs: {
+                '机身颜色': '银色',
+                '储存容量': '512G',
+            }
+        },
+        {
+            id: 5,
+            price: 9200,
+            stock: 80,
+            sku_attrs: {
+                '机身颜色': '金色',
+                '储存容量': '512G',
+            }
+        }
+    ])
+    
+    // sku发生改变事件, 选择完整的sku则回返回 否则sku的值为{}
+    let skuChange = (sku)=>{
+        console.log(sku);
+    }
+    // sku确认事件
+    let skuConfirm = (e)=>{
+        console.log(e);
+    }
+</script>
+
+<style lang="less" scoped>
+    .test {
+        padding: 3rem 1.5rem;
+    }
+</style>
 ```
+### v2示例
+```html
+<template>
+	<view class="test">
+		<geek-sku
+			v-model="skuShow"
+			:data="skus"
+			defaultTitle="iPhone14 Pro"
+			defaultCover="https://inews.gtimg.com/newsapp_bt/0/15259986145/1000"
+			btnConfirmText="购买"
+			notSelectSku="请选择完整的商品信息"
+			@skuChange="skuChange"
+			@confirm="skuConfirm"
+		></geek-sku>
+		<!-- 打开sku组件 -->
+		<button @click="skuShow = true">打开sku组件</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				// 是否显示组件
+				skuShow: false,
+				// sku列表
+				skus: [{
+						id: 1,
+						price: 7500,
+						stock: 30,
+						sku_attrs: {
+							'机身颜色': '暗紫色',
+							'储存容量': '128G'
+						}
+					},
+					{
+						id: 2,
+						price: 8500,
+						stock: 10,
+						sku_attrs: {
+							'机身颜色': '暗紫色',
+							'储存容量': '256G'
+						}
+					},
+					{
+						id: 3,
+						price: 9500,
+						stock: 0,
+						sku_attrs: {
+							'机身颜色': '暗紫色',
+							'储存容量': '512G'
+						}
+					},
+					{
+						id: 4,
+						price: 9200,
+						stock: 60,
+						sku_attrs: {
+							'机身颜色': '银色',
+							'储存容量': '512G'
+						}
+					},
+					{
+						id: 5,
+						price: 9200,
+						stock: 80,
+						sku_attrs: {
+							'机身颜色': '金色',
+							'储存容量': '512G'
+						}
+					}
+				]
+			}
+		},
+		onLoad() {},
+		methods: {
+			// sku发生改变事件, 选择完整的sku则回返回 否则sku的值为{}
+			skuChange(sku) {
+				console.log(sku);
+			},
+			// sku确认事件
+			skuConfirm(e) {
+				console.log(e);
+			}
+		}
+	}
+</script>
+<style lang="less" scoped>
+    .test {
+        padding: 3rem 1.5rem;
+    }
+</style>
+```
+## 补充
 在sku列表数组中的每一项都可以有title、logo属性，这样在选择完整的sku后就会自动展示本项sku的title、logo。
 
 例如: 
