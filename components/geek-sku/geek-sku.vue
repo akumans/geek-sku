@@ -364,7 +364,7 @@
 				 *   2. 如果要恢复的属性存在（非 disable）且 和当前*未高亮行*已选择属性的*可组合*），高亮原来已选择的属性且更新
 				 *   3. 否则什么也不做
 				 */
-				for (var i = 0; i < keys.length; i++) {
+				for (var i = 0; i < this.keys.length; i++) {
 					var item = this.keys[i];
 					if (item == skuArrKey) continue
 			
