@@ -1,10 +1,14 @@
 {
   "id": "geek-sku",
   "displayName": "geek-sku",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "一款仿京东算法的轻量化、强大、简洁、拓展性强、可以根据主题色属性自动生成相应主题色并支持v3的商品sku，仅需要按照指定格式传入sku数组便可以直接使用。",
   "keywords": [
-    "geek-sku"
+    "电商",
+    "多规格",
+    "sku",
+    "仿京东算法",
+    "vue3"
 ],
   "repository": "https://github.com/uniapp-plug/geek-sku",
   "engines": {

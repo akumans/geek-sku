@@ -119,7 +119,7 @@
 | 参数 | 说明 | 类型 | 默认值 | 可选值 |
 | --- | --- | -- | -- | -- |
 | data | 源数据(sku列表) | Array | [] | - |
-| modelValue | 是否显示sku组件 | Boolean | false | true |
+| value/modelValue | 是否显示sku组件 | Boolean | false | true |
 | isMaskClose | 是否可以点击遮罩层关闭 | Boolean | false | true |
 | isSelectMinPriceSku | 是否默认选中最低价格的sku | Boolean | true | false |
 | defaultTitle |  默认标题，用于没有选中完整的sku时展示 | String | '商品' | - |
