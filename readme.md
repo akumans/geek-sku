@@ -223,6 +223,7 @@
 | btnConfirmText | 确认按钮文字 | String | '确认' | - |
 | notStockText | 库存不足文字 | String | '库存不足' | - |
 | notSelectSku | 未选择完整的sku时的文字提示 | String | '请选择完整的sku属性' | - |
+| isShowStock | 是否展示库存 | Boolean | true | false |
 
 ### Events
 | 事件名 | 说明 | 回调参数 |
